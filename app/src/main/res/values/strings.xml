@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Kajaki</string>
+
+    <string-array name="stany">
+        <item>...</item>
+        <item>Czekamy</item>
+        <item>Wystartowali</item>
+        <item>Meldowali</item>
+        <item>Dopłynęli</item>
+        <item>Odebrani</item>
+    </string-array>
+
+    <string name="pick_time">Czas</string>
+</resources>
