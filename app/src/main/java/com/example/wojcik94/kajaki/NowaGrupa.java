@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class NowaGrupa extends AppCompatActivity {
 
-    protected int hour, minute;
+    private int hour, minute;
     private int telefon, liczba_kajakow, stan;
     TextView godzina;
 
@@ -32,12 +32,9 @@ public class NowaGrupa extends AppCompatActivity {
         godzina.setText(hour+":"+minute);
     }
 
-    public void setHour(int hour) {
-        this.hour = hour;
-    }
-
-    public void setMinute(int minute) {
-        this.minute = minute;
+    public void check(View view){
+        TextView check = (TextView) findViewById(R.id.check);
+        check.setText(hour+":"+minute);
     }
 
     public void setTime(View view){

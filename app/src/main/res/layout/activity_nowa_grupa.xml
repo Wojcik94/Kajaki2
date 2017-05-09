@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -47,6 +51,26 @@
 
         <TextView
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding='20dp'
+            android:textSize="18dp"
+            android:text="Trasa: "/>
+
+        <Spinner
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="5dp"
+            android:entries="@array/trasy"/>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:padding='20dp'
             android:textSize="18dp"
@@ -79,5 +103,50 @@
 
     </LinearLayout>
 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding='20dp'
+            android:textSize="18dp"
+            android:text="Kajaki: "/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="wprowadź"
+            android:onClick="entry"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/kajaki"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:inputType="text"
+        android:hint="Uwagi"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="check"
+        android:onClick="check"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/check"/>
+
+
 
 </LinearLayout>
+</ScrollView>

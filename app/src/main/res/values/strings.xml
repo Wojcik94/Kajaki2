@@ -10,5 +10,14 @@
         <item>Odebrani</item>
     </string-array>
 
+    <string-array name="trasy">
+        <item>...</item>
+        <item>Zakliczyn</item>
+        <item>Isep</item>
+        <item>Tarnów</item>
+        <item>Biała</item>
+        <item>Inna</item>
+    </string-array>
+
     <string name="pick_time">Czas</string>
 </resources>
