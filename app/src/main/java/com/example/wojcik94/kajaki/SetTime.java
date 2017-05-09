@@ -7,6 +7,8 @@ import android.widget.TimePicker;
 
 public class SetTime extends NowaGrupa {
 
+    private TimePicker timePicker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,5 +17,11 @@ public class SetTime extends NowaGrupa {
         TimePicker timePicker = (TimePicker) findViewById(R.id.time_picker);
 
         timePicker.setIs24HourView(true);
+    }
+
+    private void akceptuj(){
+        hour = timePicker.getHour();
+        minute = timePicker.getMinute();
+        finish();
     }
 }

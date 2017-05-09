@@ -18,7 +18,7 @@ public class NowaGrupa extends AppCompatActivity {
         setContentView(R.layout.activity_nowa_grupa);
 
         Calendar c = Calendar.getInstance();
-        hour = c.get(Calendar.HOUR);
+        hour = c.get(Calendar.HOUR_OF_DAY);
         minute = c.get(Calendar.MINUTE);
     }
 
@@ -27,7 +27,8 @@ public class NowaGrupa extends AppCompatActivity {
         startActivity(intent);
     }
 
-    protected void onResume(){
+    public void onResume(){
+        super.onResume();
         final TextView godzina = (TextView) findViewById(R.id.godzina) ;
         godzina.setText(hour+":"+minute);
     }
