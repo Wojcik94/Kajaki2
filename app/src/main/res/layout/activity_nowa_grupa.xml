@@ -11,6 +11,7 @@
     android:orientation="vertical">
 
     <EditText
+        android:id="@+id/nazwisko"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
@@ -18,6 +19,7 @@
         android:hint="Nazwisko i imię"/>
 
     <EditText
+        android:id="@+id/telefon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="phone"
@@ -37,6 +39,7 @@
             android:text="Liczba kajaków: "/>
 
         <EditText
+            android:id="@+id/liczba_kajakow"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -57,6 +60,7 @@
             android:text="Trasa: "/>
 
         <Spinner
+            android:id="@+id/trasa"
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
             android:layout_marginRight="5dp"
@@ -77,6 +81,7 @@
             android:text="Stan:"/>
 
         <Spinner
+            android:id="@+id/stan"
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
             android:layout_marginRight="5dp"
@@ -129,6 +134,7 @@
         android:layout_height="wrap_content" />
 
     <EditText
+        android:id="@+id/uwagi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
@@ -145,6 +151,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/check"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/raport"/>
 
 
 
