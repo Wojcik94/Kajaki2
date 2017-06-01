@@ -17,4 +17,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, NowaGrupa.class);
         startActivity(intent);
     }
+
+    public void editGroup(View view){
+        Intent intent = new Intent(this, EdycjaGrupy.class);
+        startActivity(intent);
+    }
 }
