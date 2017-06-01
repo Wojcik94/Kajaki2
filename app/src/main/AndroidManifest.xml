@@ -21,8 +21,9 @@
         <activity android:name=".NowaGrupa" />
         <activity
             android:name=".popup"
-            android:theme="@style/AppTheme.popup"></activity>
-        <activity android:name=".EdycjaGrupy"></activity>
+            android:theme="@style/AppTheme.popup" />
+        <activity android:name=".WyborGrupy" />
+        <activity android:name=".LoadingWyborGrupy"></activity>
     </application>
 
 </manifest>
