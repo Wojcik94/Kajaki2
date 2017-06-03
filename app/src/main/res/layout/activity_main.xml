@@ -17,13 +17,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:text="Zmiana stanu"
+        android:text="Edycja"
         android:onClick="editGroup"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:text="Podgląd" />
+        android:text="Podgląd"
+        android:onClick="podglad"/>
 
 </LinearLayout>

@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class LoadingWyborGrupy extends AppCompatActivity {
 
@@ -25,10 +26,14 @@ public class LoadingWyborGrupy extends AppCompatActivity {
 
     ArrayList<klient> lista;
 
+    int data;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
+
+        data= (int) getIntent().getIntExtra("data", 0);
 
         Get getData = new Get();
         getData.execute("");
@@ -51,7 +56,7 @@ public class LoadingWyborGrupy extends AppCompatActivity {
                 }
                 else {
                     stmt=conn.createStatement();
-                    final ResultSet resultSet= (ResultSet) stmt.executeQuery("SELECT id, nazwisko FROM grupy WHERE stan<>'Odebrani';");
+                    final ResultSet resultSet= (ResultSet) stmt.executeQuery("SELECT id, nazwisko FROM grupy WHERE stan<>'Odebrani' AND data="+data+";");
 
                     while(resultSet.next()) {
                         lista.add(new klient(resultSet.getInt(1), resultSet.getString(2)));
@@ -77,6 +82,7 @@ public class LoadingWyborGrupy extends AppCompatActivity {
             intent.setClass(getApplicationContext(), WyborGrupy.class);
             Log.d("Wysyłanie", ""+lista.size());
             intent.putExtra("lista", lista);
+            intent.putExtra("data", data);
             startActivity(intent);
         }
     }

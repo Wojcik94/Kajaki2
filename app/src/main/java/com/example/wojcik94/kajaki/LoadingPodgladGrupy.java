@@ -2,8 +2,8 @@ package com.example.wojcik94.kajaki;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -12,9 +12,8 @@ import com.mysql.jdbc.ResultSet;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
-import java.util.ArrayList;
 
-public class LoadingEdycjaGrupy extends AppCompatActivity {
+public class LoadingPodgladGrupy extends AppCompatActivity {
 
     private static final String DB_URL = "jdbc:mysql://serwer1758474.home.pl:3306/24264124_1";
     private static final String USER = "24264124_1";
@@ -79,8 +78,8 @@ public class LoadingEdycjaGrupy extends AppCompatActivity {
         protected void onPostExecute(String msg) {
             //Toast.makeText(WyborGrupy.this, msg, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent();
-            intent.setClass(getApplicationContext(), EdycjaGrupy.class);
-            Log.d("Przekazanie do Edycja Grupy", "ok");
+            intent.setClass(getApplicationContext(), PodgladGrupy.class);
+            Log.d("Przekazanie do PodgladGrupy", "ok");
             intent.putExtra("grupa", grupa);
             startActivity(intent);
         }

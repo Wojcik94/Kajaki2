@@ -2,8 +2,8 @@ package com.example.wojcik94.kajaki;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -13,8 +13,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 
-public class LoadingEdycjaGrupy extends AppCompatActivity {
+public class LoadingWyborGrupyPodglad extends AppCompatActivity {
 
     private static final String DB_URL = "jdbc:mysql://serwer1758474.home.pl:3306/24264124_1";
     private static final String USER = "24264124_1";
@@ -23,17 +24,16 @@ public class LoadingEdycjaGrupy extends AppCompatActivity {
     String msg = "";
     Statement stmt=null;
 
-    KlientKonkret grupa;
+    ArrayList<klient> lista;
 
-    int id;
+    int data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("Open Activity", "LoadingEdycjaGrupy");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
 
-        id = getIntent().getIntExtra("id", 1);
+        data= (int) getIntent().getIntExtra("data", 0);
 
         Get getData = new Get();
         getData.execute("");
@@ -45,6 +45,8 @@ public class LoadingEdycjaGrupy extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
 
+            lista = new ArrayList<klient>();
+
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -54,13 +56,11 @@ public class LoadingEdycjaGrupy extends AppCompatActivity {
                 }
                 else {
                     stmt=conn.createStatement();
-                    final ResultSet resultSet= (ResultSet) stmt.executeQuery("SELECT * FROM grupy WHERE id="+id+";");
+                    final ResultSet resultSet= (ResultSet) stmt.executeQuery("SELECT id, nazwisko FROM grupy WHERE data="+data+";");
 
                     while(resultSet.next()) {
-                        grupa=new KlientKonkret(resultSet.getInt("id"), resultSet.getInt("data"),
-                                resultSet.getInt("telefon"), resultSet.getInt("liczba_kajakow"), resultSet.getInt("godzina"),
-                                resultSet.getString("nazwisko"), resultSet.getString("trasa"), resultSet.getString("stan"),
-                                resultSet.getString("kajaki"), resultSet.getString("uwagi"));
+                        lista.add(new klient(resultSet.getInt(1), resultSet.getString(2)));
+                        Log.d("Grupa", resultSet.getString(2));
                     }
                 }
                 msg="Pobrano listę";
@@ -79,9 +79,10 @@ public class LoadingEdycjaGrupy extends AppCompatActivity {
         protected void onPostExecute(String msg) {
             //Toast.makeText(WyborGrupy.this, msg, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent();
-            intent.setClass(getApplicationContext(), EdycjaGrupy.class);
-            Log.d("Przekazanie do Edycja Grupy", "ok");
-            intent.putExtra("grupa", grupa);
+            intent.setClass(getApplicationContext(), WyborGrupyPodglad.class);
+            Log.d("Wysyłanie", ""+lista.size());
+            intent.putExtra("lista", lista);
+            intent.putExtra("data", data);
             startActivity(intent);
         }
     }

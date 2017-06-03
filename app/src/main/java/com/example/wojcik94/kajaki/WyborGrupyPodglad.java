@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
@@ -17,10 +16,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class WyborGrupy extends AppCompatActivity {
+public class WyborGrupyPodglad extends AppCompatActivity {
 
     //Intent intent=getIntent();
-
+    Calendar c;
 
     Button b, dataButton;
     ScrollView scrollview;
@@ -38,10 +37,17 @@ public class WyborGrupy extends AppCompatActivity {
         ArrayList<klient> myList = (ArrayList<klient>) getIntent().getSerializableExtra("lista");
         data= (int) getIntent().getIntExtra("data", 0);
 
+        LinearLayout dataLayout= new LinearLayout(this);
+        dataLayout.setOrientation(LinearLayout.VERTICAL);
+
+
         scrollview = new ScrollView(this);
         LinearLayout linearlayout = new LinearLayout(this);
         linearlayout.setOrientation(LinearLayout.VERTICAL);
+
         scrollview.addView(linearlayout);
+
+        c = Calendar.getInstance();
 
         dataText= new TextView(this);
         dataText.setText(""+data/1000000+"."+data%1000000/10000+"."+data%1000);
@@ -56,15 +62,14 @@ public class WyborGrupy extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Calendar c = Calendar.getInstance();
-                new DatePickerDialog(WyborGrupy.this, 0, onDateSetListener, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(WyborGrupyPodglad.this, 0, onDateSetListener, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 
         linearlayout.addView(dataButton);
 
         text = new TextView(this);
-        text.setText("GRUPY NIEODEBRANE:");
+        text.setText("Podglad:");
         text.setTextSize(24);
 
         text.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
@@ -86,9 +91,10 @@ public class WyborGrupy extends AppCompatActivity {
                 public void onClick(View v) {
                     // TODO Auto-generated method stub
                     Intent intent = new Intent();
-                    intent.setClass(getApplicationContext(), LoadingEdycjaGrupy.class);
+                    intent.setClass(getApplicationContext(), LoadingPodgladGrupy.class);
                     Log.d("Wysylam ID", "" + v.getId());
                     intent.putExtra("id", v.getId());
+                    intent.putExtra("data", data);
                     startActivity(intent);
                 }
             });
@@ -97,23 +103,23 @@ public class WyborGrupy extends AppCompatActivity {
 
     }
 
-    DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int sYear, int sMonth, int sDay) {
-            //dataText.setText(sDay+"."+sMonth+"."+sYear);
-            data=sYear+(sMonth+1)*10000+sDay*1000000;
-            Intent intent= new Intent();
-            intent.setClass(getApplicationContext(), LoadingWyborGrupy.class);
-            intent.putExtra("data", data);
-            Log.d("Zmieniam","LoadingWyborPodglad");
-            startActivity(intent);
-        }
-    };
-
     @Override
     public void onBackPressed() {
         Log.d("CDA", "onBackPressed Called");
         Intent setIntent = new Intent (this, MainActivity.class);
         startActivity(setIntent);
     }
+
+    DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int sYear, int sMonth, int sDay) {
+            //dataText.setText(sDay+"."+sMonth+"."+sYear);
+            data=sYear+(sMonth+1)*10000+sDay*1000000;
+            Intent intent= new Intent();
+            intent.setClass(getApplicationContext(), LoadingWyborGrupyPodglad.class);
+            intent.putExtra("data", data);
+            Log.d("Zmieniam","LoadingWyborPodglad");
+            startActivity(intent);
+        }
+    };
 }

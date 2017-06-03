@@ -23,7 +23,13 @@
             android:name=".popup"
             android:theme="@style/AppTheme.popup" />
         <activity android:name=".WyborGrupy" />
-        <activity android:name=".LoadingWyborGrupy"></activity>
+        <activity android:name=".LoadingWyborGrupy" />
+        <activity android:name=".LoadingWyborGrupyPodglad" />
+        <activity android:name=".WyborGrupyPodglad" />
+        <activity android:name=".LoadingEdycjaGrupy" />
+        <activity android:name=".LoadingPodgladGrupy" />
+        <activity android:name=".EdycjaGrupy" />
+        <activity android:name=".PodgladGrupy"></activity>
     </application>
 
 </manifest>
