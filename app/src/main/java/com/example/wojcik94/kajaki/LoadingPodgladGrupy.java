@@ -15,9 +15,9 @@ import java.sql.Statement;
 
 public class LoadingPodgladGrupy extends AppCompatActivity {
 
-    private static final String DB_URL = "jdbc:mysql://serwer1758474.home.pl:3306/24264124_1";
-    private static final String USER = "24264124_1";
-    private static final String PASS = "Quirell94";
+    private static final String DB_URL = "jdbc:mysql://URL";
+    private static final String USER = "USER";
+    private static final String PASS = "PASS";
 
     String msg = "";
     Statement stmt=null;
